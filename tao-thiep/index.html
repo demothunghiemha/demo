@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cổng Tạo Thư Mời Tốt Nghiệp | Tân Kỹ Sư Nguyễn Nhật Hoàng - HUBT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Dancing+Script:wght@600;700&family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap&subset=vietnamese" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- QRCode.js for generating QR codes -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+  <div class="bg-glow-effects">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+  </div>
+
+  <div class="app-container">
+    <!-- Header with Official HUBT Logo -->
+    <header class="main-header">
+      <div class="header-logo-wrap">
+        <img src="hubt_logo.svg" alt="HUBT Logo" class="generator-hubt-logo">
+      </div>
+      <div class="header-badges">
+        <span class="hubt-tag">🎓 HUBT - KHOA CÔNG NGHỆ THÔNG TIN</span>
+        <span class="batch-tag">KHÓA 27 • 2022 - 2026</span>
+      </div>
+      <h1 class="main-title">HỆ THỐNG SẢN SINH THƯ MỜI TỐT NGHIỆP</h1>
+      <p class="subtitle">Chủ nhân buổi lễ: <strong class="calligraphy-name">Tân Kỹ Sư Nguyễn Nhật Hoàng</strong></p>
+      <div class="event-meta-pill">
+        <span>📅 13h00 Thứ Sáu, 16/10/2026</span>
+        <span class="divider">•</span>
+        <span>📍 Hội trường nhà B - ĐH Kinh doanh & Công nghệ Hà Nội</span>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <!-- Left Column: Generator Form -->
+      <section class="form-card glass-panel">
+        <div class="card-header">
+          <div class="icon-circle">✨</div>
+          <div>
+            <h2>Tạo Thư Mời Mới</h2>
+            <p class="card-desc">Nhập thông tin người nhận để sản sinh trang web thư mời 3D độc quyền</p>
+          </div>
+        </div>
+
+        <form id="inviteForm" onsubmit="event.preventDefault(); generateInvite();">
+          <!-- Recipient Name -->
+          <div class="form-group">
+            <label for="recipientName">Tên người nhận thư <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <span class="input-icon">👤</span>
+              <input type="text" id="recipientName" placeholder="Ví dụ: Bạn Thảo, Anh Nam, Gia đình Bác Ba, Thầy Tuấn..." required autocomplete="off">
+            </div>
+          </div>
+
+          <!-- Relationship & Tone -->
+          <div class="form-row">
+            <div class="form-group col-half">
+              <label for="relationship">Mối quan hệ</label>
+              <div class="select-wrapper">
+                <select id="relationship" onchange="onRelationshipChange()">
+                  <option value="friend">Bạn thân / Bạn học</option>
+                  <option value="bestie">Bạn tri kỷ / Hội bạn chí cốt</option>
+                  <option value="teacher">Thầy Cô kính yêu</option>
+                  <option value="family">Gia đình / Người thân</option>
+                  <option value="brother">Anh / Chị</option>
+                  <option value="junior">Em / Hậu bối khóa dưới</option>
+                  <option value="colleague">Đồng nghiệp / Đối tác</option>
+                  <option value="special">Người đặc biệt / Crush ❤️</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group col-half">
+              <label for="inviteTone">Phong cách lời mời</label>
+              <div class="select-wrapper">
+                <select id="inviteTone" onchange="onToneChange()">
+                  <option value="formal">Trang trọng & Ý nghĩa</option>
+                  <option value="warm">Ấm áp & Chân thành</option>
+                  <option value="cute">Cute & Nhí nhảnh thanh xuân</option>
+                  <option value="emotional">Xúc động & Sâu lắng</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Custom Message -->
+          <div class="form-group">
+            <div class="label-with-action">
+              <label for="customMessage">Lời mời hiển thị trong thiệp</label>
+              <button type="button" class="btn-text" onclick="regenerateMessage()">🔄 Đổi mẫu lời chúc</button>
+            </div>
+            <textarea id="customMessage" rows="5" placeholder="Lời mời trang trọng và ấm áp..."></textarea>
+          </div>
+
+          <!-- Special Note or Dress Code -->
+          <div class="form-row">
+            <div class="form-group col-half">
+              <label for="guestNickname">Tên thân mật (hiển thị trên phong bì)</label>
+              <input type="text" id="guestNickname" placeholder="Tùy chọn (để trống sẽ lấy tên trên)">
+            </div>
+            <div class="form-group col-half">
+              <label for="effectTheme">Hiệu ứng chào đón</label>
+              <div class="select-wrapper">
+                <select id="effectTheme">
+                  <option value="kitty-cute" selected>🐾 Hello Kitty Cute (Ngó thiệp & Giơ 2 tay)</option>
+                  <option value="gold-confetti">Pháo hoa vàng & Ngôi sao lấp lánh</option>
+                  <option value="sakura">Hoa trắng & Cánh hoa thanh xuân</option>
+                  <option value="cap-firework">Mưa Mũ cử nhân & Pháo sáng</option>
+                  <option value="love-hearts">Trái tim bay & Ánh nến lãng mạn</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Domain Settings (Target Domain for Invitation) -->
+          <div class="domain-config-box">
+            <div class="domain-header">
+              <span class="domain-icon">🌐</span>
+              <div>
+                <strong>Cấu hình Tên Miền Web Thư Mời</strong>
+                <span class="domain-subtext">Đảm bảo web thư mời chạy ở tên miền hoặc cổng khác hoàn toàn web chính</span>
+              </div>
+            </div>
+            <div class="domain-input-group">
+              <input type="text" id="targetDomain" value="https://demothunghiemha.github.io/demo" placeholder="https://demothunghiemha.github.io/demo">
+              <button type="button" class="btn-outline-sm" onclick="resetDomain()">Khôi phục mặc định</button>
+            </div>
+            <p class="domain-note">💡 Khi bạn triển khai (deploy) web thư mời lên tên miền riêng (Vercel, Netlify, Domain riêng...), hãy dán địa chỉ đó vào đây để link sản sinh ra chính xác 100%!</p>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn-primary-large">
+            <span class="btn-icon">✨</span>
+            <span class="btn-text-main">SẢN SINH WEB THƯ MỜI ĐỘC QUYỀN</span>
+          </button>
+        </form>
+      </section>
+
+      <!-- Right Column: Result & Preview -->
+      <section class="result-card glass-panel" id="resultCard">
+        <div class="card-header">
+          <div class="icon-circle gold">🎉</div>
+          <div>
+            <h2>Web Thư Mời Đã Sẵn Sàng!</h2>
+            <p class="card-desc" id="resultSubtitle">Đã tạo thành công thư mời cho khách quý</p>
+          </div>
+        </div>
+
+        <div class="generated-box">
+          <div class="invitation-preview-card">
+            <div class="badge-mini">THƯ MỜI CHÍNH THỨC</div>
+            <div class="guest-highlight-name calligraphy-font" id="previewGuestName">Khách Quý</div>
+            <p class="preview-text-snippet" id="previewTextSnippet">"Sự hiện diện của bạn là niềm vinh dự to lớn..."</p>
+            <div class="preview-bottom-bar">
+              <span>🎓 Kỹ Sư CNTT - K27 HUBT</span>
+              <span>16/10/2026</span>
+            </div>
+          </div>
+
+          <!-- Generated URL -->
+          <div class="url-output-container">
+            <label>Đường link web thư mời độc quyền:</label>
+            <div class="url-copy-box">
+              <input type="text" id="generatedUrl" readonly value="">
+              <button class="btn-copy" id="btnCopyLink" onclick="copyInvitationLink()">
+                <span class="icon">📋</span> Sao chép Link
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="action-buttons-grid">
+            <a id="btnTestOpen" href="#" target="_blank" class="action-btn btn-open">
+              <span>🚀</span>
+              <strong>Mở xem thư mời</strong>
+              <small>Xem trải nghiệm như khách</small>
+            </a>
+            <button type="button" class="action-btn btn-qr" onclick="showQrModal()">
+              <span>📱</span>
+              <strong>Tải mã QR Code</strong>
+              <small>Gửi qua Zalo / Facebook</small>
+            </button>
+            <button type="button" class="action-btn btn-msg" onclick="copyPreparedMessage()">
+              <span>💬</span>
+              <strong>Copy tin nhắn Zalo</strong>
+              <small>Kèm lời mời & link sẵn</small>
+            </button>
+          </div>
+
+          <!-- Important Security / Isolation Note -->
+          <div class="isolation-notice">
+            <div class="notice-icon">🔒</div>
+            <div>
+              <strong>Cam kết cách ly tuyệt đối:</strong>
+              <p>Khách khi mở trang web thư mời này sẽ chỉ nhìn thấy duy nhất thiệp mời 3D trang trọng. <strong>Hoàn toàn không có đường dẫn hay nút bấm nào</strong> để quay về trang quản lý/sản sinh này!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- History List -->
+        <div class="history-section">
+          <div class="history-header">
+            <h3>Danh sách đã sản sinh gần đây (<span id="historyCount">0</span>)</h3>
+            <button class="btn-clear-history" onclick="clearHistory()">Xóa lịch sử</button>
+          </div>
+          <div class="history-list" id="historyList">
+            <p class="empty-history">Chưa có thư mời nào được tạo. Hãy tạo chiếc thư mời đầu tiên ở bên trái nhé!</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <p>© 2026 Bản quyền thuộc về <strong>Nguyễn Nhật Hoàng</strong> - Tân Kỹ sư Công nghệ Thông tin Khóa 27</p>
+      <p>Trường Đại học Kinh doanh và Công nghệ Hà Nội (HUBT)</p>
+    </footer>
+  </div>
+
+  <!-- QR Code Modal -->
+  <div class="modal-overlay" id="qrModal" onclick="closeQrModal(event)">
+    <div class="modal-content glass-panel" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeQrModal()">&times;</button>
+      <div class="modal-header">
+        <span class="modal-badge">MÃ QR THƯ MỜI</span>
+        <h3 id="qrModalTitle">Quét mã nhận Thư Mời Tốt Nghiệp</h3>
+        <p id="qrModalGuest">Dành riêng cho: Bạn Thảo</p>
+      </div>
+      <div class="qr-canvas-wrapper" id="qrCanvasContainer">
+        <div id="qrcode"></div>
+      </div>
+      <p class="qr-instruction">Dùng Zalo hoặc Camera điện thoại quét mã để mở thư mời 3D ngay lập tức!</p>
+      <div class="modal-actions">
+        <button class="btn-primary-sm" onclick="downloadQrCode()">💾 Tải ảnh QR về máy</button>
+        <button class="btn-outline-sm" onclick="closeQrModal()">Đóng lại</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notification" id="toast">
+    <span class="toast-icon">✅</span>
+    <span class="toast-message" id="toastMessage">Đã sao chép liên kết vào bộ nhớ tạm!</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
