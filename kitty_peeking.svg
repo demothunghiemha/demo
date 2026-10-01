@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 180" width="100%" height="100%">
+  <!-- Definitions -->
+  <defs>
+    <filter id="kitty-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="rgba(0,0,0,0.15)"/>
+    </filter>
+  </defs>
+
+  <g id="kitty-peeking-body">
+    <!-- Paws resting on envelope -->
+    <g id="kitty-paws">
+      <ellipse cx="60" cy="162" rx="14" ry="10" fill="#ffffff" stroke="#222" stroke-width="3"/>
+      <ellipse cx="140" cy="162" rx="14" ry="10" fill="#ffffff" stroke="#222" stroke-width="3"/>
+    </g>
+
+    <!-- Hello Kitty Head -->
+    <ellipse cx="100" cy="98" rx="68" ry="52" fill="#ffffff" stroke="#222" stroke-width="4.5" filter="url(#kitty-shadow)"/>
+
+    <!-- Left Ear -->
+    <path d="M 45 68 Q 30 25 58 40 Z" fill="#ffffff" stroke="#222" stroke-width="4.5" stroke-linejoin="round"/>
+    <!-- Right Ear -->
+    <path d="M 155 68 Q 170 25 142 40 Z" fill="#ffffff" stroke="#222" stroke-width="4.5" stroke-linejoin="round"/>
+
+    <!-- Graduation Cap on Left Ear -->
+    <g transform="translate(42, 10) rotate(-14)">
+      <!-- Cap Diamond -->
+      <polygon points="35,0 70,16 35,32 0,16" fill="#1e293b" stroke="#d4af37" stroke-width="2"/>
+      <polygon points="35,6 62,18 35,28 8,18" fill="#0f172a"/>
+      <!-- Cap Skullcap -->
+      <path d="M 18 24 L 18 36 Q 35 44 52 36 L 52 24 Z" fill="#0f172a" stroke="#d4af37" stroke-width="1.5"/>
+      <!-- Gold Button & Tassel -->
+      <circle cx="35" cy="16" r="3.5" fill="#ffd700"/>
+      <path d="M 35 16 Q 16 26 12 40" stroke="#ffd700" stroke-width="2" fill="none"/>
+      <circle cx="12" cy="42" r="2.5" fill="#ffd700"/>
+    </g>
+
+    <!-- Pink Bow on Right Ear -->
+    <g transform="translate(132, 44) rotate(15)">
+      <!-- Left loop -->
+      <path d="M 0 0 C -18 -15 -25 12 0 4 Z" fill="#ff69b4" stroke="#222" stroke-width="3.5"/>
+      <!-- Right loop -->
+      <path d="M 0 0 C 18 -15 25 12 0 4 Z" fill="#ff69b4" stroke="#222" stroke-width="3.5"/>
+      <!-- Center knot -->
+      <circle cx="0" cy="2" r="7.5" fill="#ff1493" stroke="#222" stroke-width="3"/>
+    </g>
+
+    <!-- Eyes (Black Ovals) -->
+    <ellipse cx="68" cy="100" rx="5" ry="7" fill="#222222"/>
+    <ellipse cx="132" cy="100" rx="5" ry="7" fill="#222222"/>
+
+    <!-- Cute Eye Sparkles -->
+    <circle cx="66" cy="98" r="1.5" fill="#ffffff"/>
+    <circle cx="130" cy="98" r="1.5" fill="#ffffff"/>
+
+    <!-- Nose (Yellow Oval) -->
+    <ellipse cx="100" cy="110" rx="6.5" ry="4.5" fill="#facc15" stroke="#222" stroke-width="2.5"/>
+
+    <!-- Rosy Blushing Cheeks -->
+    <ellipse cx="50" cy="114" rx="10" ry="6" fill="#ffb6c1" opacity="0.8"/>
+    <ellipse cx="150" cy="114" rx="10" ry="6" fill="#ffb6c1" opacity="0.8"/>
+
+    <!-- Whiskers (3 on each side) -->
+    <!-- Left Whiskers -->
+    <line x1="38" y1="98" x2="16" y2="92" stroke="#222" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="36" y1="108" x2="12" y2="108" stroke="#222" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="38" y1="118" x2="16" y2="124" stroke="#222" stroke-width="3.5" stroke-linecap="round"/>
+
+    <!-- Right Whiskers -->
+    <line x1="162" y1="98" x2="184" y2="92" stroke="#222" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="164" y1="108" x2="188" y2="108" stroke="#222" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="162" y1="118" x2="184" y2="124" stroke="#222" stroke-width="3.5" stroke-linecap="round"/>
+  </g>
+</svg>

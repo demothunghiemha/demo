@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thư Mời Lễ Tốt Nghiệp | Tân Kỹ Sư Nguyễn Nhật Hoàng - HUBT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Full Vietnamese Calligraphy & Handwriting Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400;1,600;1,700&display=swap&subset=vietnamese" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Canvas Confetti library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+  <!-- Ambient Particle Canvas -->
+  <canvas id="ambientCanvas"></canvas>
+
+  <!-- Background Music Controller (Floating Vinyl Player) -->
+  <div class="music-player-widget" id="musicWidget" onclick="toggleAudio()" title="Bật / Tắt giai điệu thanh xuân">
+    <div class="vinyl-disc" id="vinylDisc">
+      <div class="vinyl-groove"></div>
+      <div class="vinyl-center">🎓</div>
+    </div>
+    <div class="music-tooltip">
+      <span id="musicStatusText">Bật nhạc nền</span> 🎵
+    </div>
+    <div class="floating-notes" id="floatingNotes"></div>
+  </div>
+
+  <!-- Stage 1: 3D Interactive Envelope Screen with Cute Hello Kitty -->
+  <div class="envelope-screen" id="envelopeScreen">
+    <div class="envelope-scene">
+      
+      <!-- CUTE HELLO KITTY PEEKING BEHIND ENVELOPE (Từ ảnh gif ngó cửa phòng) -->
+      <div class="kitty-peeker-container" id="kittyPeeker">
+        <div class="kitty-speech-bubble" id="kittySpeech">
+          Hoàng gửi thiệp nè! Mở ra đi bạn ơi ♡ 🐾
+        </div>
+        <img src="kitty_peeking.gif" alt="Hello Kitty Ngó Thiệp" class="kitty-peeking-img">
+      </div>
+
+      <!-- CUTE HELLO KITTY CHEERING (Từ ảnh gif giơ tay ăn mừng & vỗ tay) -->
+      <div class="kitty-cheer-container" id="kittyCheer">
+        <div class="kitty-cheer-bubble">
+          Hooray! Tân Kỹ Sư Hoàng đỉnh nóc! 🎉🎓
+        </div>
+        <img src="kitty_cheering.gif" alt="Hello Kitty Vỗ Tay Ăn Mừng" class="kitty-cheering-img">
+      </div>
+
+      <!-- Envelope 3D Body -->
+      <div class="envelope-wrapper" id="envelopeWrapper" onclick="openEnvelope()">
+        <div class="envelope">
+          <!-- Back Interior -->
+          <div class="envelope-back"></div>
+          
+          <!-- Card Inside (Peeks out before fully open) -->
+          <div class="envelope-card-peek" id="cardPeek">
+            <div class="peek-logo">
+              <img src="hubt_logo.svg" alt="HUBT" style="height: 28px; vertical-align: middle;">
+              <span>HUBT - KHOA CNTT</span>
+            </div>
+            <div class="peek-to">Trân trọng kính mời:</div>
+            <div class="peek-name calligraphy-font" id="peekGuestName">Khách Quý</div>
+          </div>
+
+          <!-- Left & Right Flaps -->
+          <div class="envelope-left"></div>
+          <div class="envelope-right"></div>
+          
+          <!-- Bottom Flap -->
+          <div class="envelope-bottom"></div>
+
+          <!-- Top Foldable Flap -->
+          <div class="envelope-top" id="envelopeTop">
+            <div class="flap-triangle"></div>
+          </div>
+
+          <!-- Wax Seal with HUBT Emblem -->
+          <div class="wax-seal" id="waxSeal">
+            <div class="seal-inner">
+              <span class="seal-emblem">HUBT</span>
+              <span class="seal-year">2026</span>
+            </div>
+          </div>
+
+          <!-- Recipient Nameplate on Front with Calligraphy -->
+          <div class="envelope-nameplate">
+            <span class="nameplate-sub">KÍNH GỬI:</span>
+            <h2 class="nameplate-name calligraphy-font" id="envelopeGuestName">Khách Quý</h2>
+            <div class="nameplate-ornament">❖ ───── • ───── ❖</div>
+          </div>
+        </div>
+
+        <!-- Cute Pulse Instruction -->
+        <div class="tap-hint" id="tapHint">
+          <div class="tap-icon">✉️</div>
+          <p>Chạm vào phong bì để mở thư nhé!</p>
+          <span class="sparkle-text">✨ Mở ra dấu mốc thanh xuân ✨</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 2: Main Standalone Graduation Invitation Experience -->
+  <div class="invitation-container" id="invitationContainer">
+    
+    <!-- Top Royal Ribbon -->
+    <div class="invitation-wrapper">
+      <div class="card-outer-frame">
+        <div class="gold-corner top-left"></div>
+        <div class="gold-corner top-right"></div>
+        <div class="gold-corner bottom-left"></div>
+        <div class="gold-corner bottom-right"></div>
+
+        <!-- Main Card Body -->
+        <article class="invitation-card">
+          
+          <!-- Cute Mascot Standing on Top Corner -->
+          <div class="card-mascot-sticker">
+            <img src="kitty_cheering.gif" alt="Hello Kitty Cử Nhân" class="sticker-kitty-img">
+            <span class="sticker-tag">Thanh xuân rực rỡ ♡</span>
+          </div>
+
+          <!-- University & Faculty Header with Official HUBT Logo -->
+          <header class="card-header-formal">
+            <div class="school-logo-shield">
+              <!-- Official HUBT Logo SVG -->
+              <img src="hubt_logo.svg" alt="Logo Đại học Kinh doanh và Công nghệ Hà Nội" class="official-hubt-logo-img">
+            </div>
+            
+            <div class="school-titles">
+              <h3 class="uni-name">TRƯỜNG ĐẠI HỌC KINH DOANH VÀ CÔNG NGHỆ HÀ NỘI</h3>
+              <h4 class="faculty-name">KHOA CÔNG NGHỆ THÔNG TIN</h4>
+            </div>
+
+            <div class="ribbon-banner">
+              <span class="ribbon-text">SINH VIÊN KHÓA 27 • NGÀNH CÔNG NGHỆ THÔNG TIN</span>
+            </div>
+
+            <div class="fancy-title-block">
+              <span class="script-invitation">Thư Mời</span>
+              <h1 class="grand-ceremony-title">LỄ TỐT NGHIỆP</h1>
+            </div>
+          </header>
+
+          <!-- Host & Guest Honor Section with Vietnamese Calligraphy Script -->
+          <section class="card-people-section">
+            <div class="host-announcement">
+              <span class="host-label">TÂN KỸ SƯ CÔNG NGHỆ THÔNG TIN</span>
+              <!-- Host Name in Exquisite Calligraphy -->
+              <h2 class="host-name calligraphy-font gold-shimmer">Nguyễn Nhật Hoàng</h2>
+              <div class="gold-divider">
+                <span class="leaf-left">🌿</span>
+                <span class="divider-line"></span>
+                <span class="center-star">⭐</span>
+                <span class="divider-line"></span>
+                <span class="leaf-right">🌿</span>
+              </div>
+            </div>
+
+            <!-- Personalized Guest Box with Calligraphy -->
+            <div class="guest-honor-box">
+              <span class="honor-prefix">Trân trọng kính mời</span>
+              <h3 class="recipient-fullname calligraphy-font" id="guestFullName">Khách Quý</h3>
+              <div class="honor-sub">Tới dự lễ tốt nghiệp và chung vui trong ngày đặc biệt này!</div>
+            </div>
+          </section>
+
+          <!-- Heartfelt Invitation Letter -->
+          <section class="letter-body-section">
+            <div class="letter-quote-marks">“</div>
+            <p class="letter-paragraph" id="invitationMessage">
+              Sau những năm tháng học tập, rèn luyện và không ngừng nỗ lực, hành trình thanh xuân dưới mái trường Đại học Kinh doanh và Công nghệ Hà Nội của Hoàng đang đi đến một dấu mốc thật đặc biệt – Lễ Tốt nghiệp Tân Kỹ sư Công nghệ Thông tin.
+            </p>
+            <p class="letter-paragraph">
+              Đây là khoảnh khắc ý nghĩa nhất để nhìn lại một chặng đường đã qua – những bài học, những kỷ niệm và những dấu ấn đẹp đẽ. Sự hiện diện và nụ cười của bạn chính là niềm vinh hạnh to lớn và là món quà thanh xuân quý giá nhất đối với Hoàng!
+            </p>
+            <div class="quote-sign-off">
+              <span class="slogan-script calligraphy-font">"Thanh xuân có bạn thật đẹp! ♡"</span>
+              <span class="slogan-motto">Khép lại một hành trình – Mở ra một tương lai!</span>
+            </div>
+          </section>
+
+          <!-- Ceremony Schedule & Venue Cards -->
+          <section class="event-details-grid">
+            <!-- Time Box -->
+            <div class="detail-card time-card">
+              <div class="card-icon-3d">⏰</div>
+              <div class="card-detail-info">
+                <span class="detail-label">THỜI GIAN</span>
+                <strong class="detail-main-time">13h00 (Thứ Sáu)</strong>
+                <span class="detail-date">Ngày 16 Tháng 10 Năm 2026</span>
+              </div>
+            </div>
+
+            <!-- Venue Box -->
+            <div class="detail-card venue-card">
+              <div class="card-icon-3d">🏛️</div>
+              <div class="card-detail-info">
+                <span class="detail-label">ĐỊA ĐIỂM</span>
+                <strong class="detail-main-venue">Hội trường nhà B</strong>
+                <span class="detail-address">Trường Đại học Kinh doanh và Công nghệ Hà Nội</span>
+                <small class="address-sub">Số 29A, Ngõ 124, Phố Vĩnh Tuy, Q. Hai Bà Trưng, Hà Nội</small>
+              </div>
+            </div>
+          </section>
+
+          <!-- Map & Directions Button -->
+          <div class="map-action-row">
+            <a href="https://maps.google.com/?q=Trường+Đại+học+Kinh+doanh+và+Công+nghệ+Hà+Nội" target="_blank" class="btn-map-guide">
+              <span>📍</span> Xem vị trí & Chỉ đường trên Google Maps
+            </a>
+          </div>
+
+          <!-- Countdown Timer Section -->
+          <section class="countdown-section">
+            <div class="countdown-title">
+              <span>⏳</span> ĐẾM NGƯỢC ĐẾN KHOẢNH KHẮC TỐT NGHIỆP
+            </div>
+            <div class="countdown-boxes">
+              <div class="timer-unit">
+                <span class="timer-num" id="cdDays">00</span>
+                <span class="timer-label">Ngày</span>
+              </div>
+              <div class="timer-sep">:</div>
+              <div class="timer-unit">
+                <span class="timer-num" id="cdHours">00</span>
+                <span class="timer-label">Giờ</span>
+              </div>
+              <div class="timer-sep">:</div>
+              <div class="timer-unit">
+                <span class="timer-num" id="cdMinutes">00</span>
+                <span class="timer-label">Phút</span>
+              </div>
+              <div class="timer-sep">:</div>
+              <div class="timer-unit">
+                <span class="timer-num" id="cdSeconds">00</span>
+                <span class="timer-label">Giây</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Interactive Celebration Buttons -->
+          <section class="interactive-action-bar">
+            <!-- Toss Cap Button -->
+            <button class="interactive-btn btn-toss-cap" onclick="tossGraduationCap()">
+              <span class="btn-emoji">🎓</span>
+              <div class="btn-text-wrap">
+                <strong>Tung Mũ Ăn Mừng!</strong>
+                <small>Bắn pháo hoa & mũ chúc mừng Hoàng</small>
+              </div>
+            </button>
+
+            <!-- Add to Calendar Button -->
+            <button class="interactive-btn btn-calendar" onclick="addToCalendar()">
+              <span class="btn-emoji">📅</span>
+              <div class="btn-text-wrap">
+                <strong>Lưu Vào Lịch</strong>
+                <small>Nhắc nhở ngày 16/10/2026</small>
+              </div>
+            </button>
+          </section>
+
+          <!-- Youth Graduation Quotes -->
+          <footer class="card-footer-quote">
+            <div class="footer-emblem-row">
+              <span>🎓</span>
+              <span>•</span>
+              <span>⭐</span>
+              <span>•</span>
+              <span>🎓</span>
+            </div>
+            <p class="final-regards">Khoa Công nghệ Thông tin – Trường ĐH Kinh doanh và Công nghệ Hà Nội</p>
+            <p class="final-wish calligraphy-font">Hẹn gặp bạn tại Lễ Tốt Nghiệp!</p>
+          </footer>
+
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio Synthesizer & Logic Scripts -->
+  <script src="music.js"></script>
+  <script src="invite.js"></script>
+</body>
+</html>
