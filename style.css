@@ -373,7 +373,7 @@ body {
   height: 0;
   border-top: 145px solid transparent;
   border-bottom: 145px solid transparent;
-  border-left: 210px solid #102d55;
+  border-left: min(46vw, 220px) solid #102d55;
   border-bottom-left-radius: 12px;
   border-top-left-radius: 12px;
   z-index: 3;
@@ -388,7 +388,7 @@ body {
   height: 0;
   border-top: 145px solid transparent;
   border-bottom: 145px solid transparent;
-  border-right: 210px solid #102d55;
+  border-right: min(46vw, 220px) solid #102d55;
   border-bottom-right-radius: 12px;
   border-top-right-radius: 12px;
   z-index: 3;
